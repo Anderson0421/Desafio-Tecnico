@@ -7,6 +7,7 @@ import Registros from './pages/Registros'
 import Carreras from './pages/Carreras'
 import CrearCarrera from './pages/CrearCarrera'
 import DetailCarrera from './pages/DetailCarrera'
+import EditCarreras from './pages/EditCarreras'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/carreras" element={<Carreras />} />
           <Route path="/carreras/crear/" element={<CrearCarrera />} />
           <Route path="/carreras/detail/:id/" element={<DetailCarrera />} />
+          <Route path="/carreras/edit/:id/" element={<EditCarreras />} />
           
         </Routes>
       </Router>
