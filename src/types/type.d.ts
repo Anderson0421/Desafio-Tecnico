@@ -1,5 +1,6 @@
 
 export interface CarreraType{
+    id: number;
     nombre: string;
     duracion: number;
     descripcion: string;

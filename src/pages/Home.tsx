@@ -4,7 +4,6 @@ import Layout from "../layouts/layout";
 import { AlumnoType } from "../types/type";
 import { Link } from "react-router-dom";
 import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content'
 
 export default function Home() {
     const [Alumnos, setAlumnos] = useState<AlumnoType[]>([])
@@ -122,7 +121,7 @@ export default function Home() {
                         Crear alumno
                     </Link>
                 </div>
-                <DataTablePersonalizado href="alumnos" data={Alumnos} columns={workspacesColumns}
+                <DataTablePersonalizado IsCRUD={true} href="alumnos" data={Alumnos} columns={workspacesColumns}
                     functionProp={(id: number) => () => handleModal(id)}
                 />
             </section>

@@ -7,7 +7,7 @@ export const LinksItems: LinkItem[] = [
     },
     {
         name: 'Registros',
-        href: '#'
+        href: '../registros'
     },
     {
         name: 'Carreras',

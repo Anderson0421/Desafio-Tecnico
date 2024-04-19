@@ -41,10 +41,11 @@ type DatatableProps = {
     data: AlumnoType[];
     columns: Column[];
     href: string;
-    functionProp: (id: number) => ()  => void;
+    functionProp: (id: number) => () => void;
+    IsCRUD: boolean;
 };
 
-export default function DataTablePersonalizado({ data, columns, href, functionProp }: DatatableProps) {
+export default function DataTablePersonalizado({ data, columns, href, functionProp, IsCRUD }: DatatableProps) {
     const pageSize = 8;
 
     const mappedData = useMemo(() => {
@@ -108,16 +109,22 @@ export default function DataTablePersonalizado({ data, columns, href, functionPr
 
 
                             <TableCell className='flex gap-3'>
-                                <Link to={`${href}/edit/${row.original.id}`}>
-                                    <BtnNext className="text-xs" color='success' variant="bordered"
-                                        startContent={<EditIcon iconClass={'w-5'} />}>Edit</BtnNext>
-                                </Link>
-                                <Link to={`${href}/detail/${row.original.id}`}>
-                                    <BtnNext className="text-xs" color='warning' variant='bordered'
-                                        startContent={<ViewIcon iconClass={'w-5'} />}>Detail</BtnNext>
-                                </Link>
-                                <BtnNext onClick={functionProp(row.original.id as number)} className="text-xs" color="danger" variant="bordered"
-                                    startContent={<TrashIcon iconClass={'w-5'} />} >Delete</BtnNext>
+                                {
+                                    IsCRUD && (
+                                        <>
+                                            <Link to={`${href}/edit/${row.original.id}`}>
+                                                <BtnNext className="text-xs" color='success' variant="bordered"
+                                                    startContent={<EditIcon iconClass={'w-5'} />}>Edit</BtnNext>
+                                            </Link>
+                                            <Link to={`${href}/detail/${row.original.id}`}>
+                                                <BtnNext className="text-xs" color='warning' variant='bordered'
+                                                    startContent={<ViewIcon iconClass={'w-5'} />}>Detail</BtnNext>
+                                            </Link>
+                                            <BtnNext onClick={functionProp(row.original.id as number)} className="text-xs" color="danger" variant="bordered"
+                                                startContent={<TrashIcon iconClass={'w-5'} />} >Delete</BtnNext>
+                                        </>
+                                    )
+                                }
                             </TableCell>
                         </TableRow>
                     ))}
