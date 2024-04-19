@@ -125,3 +125,15 @@ class CarrerasActualizacionView(generics.ListAPIView):
 class CarrerasEliminacionView(generics.ListAPIView):
     queryset = EliminacionCarrera.objects.all()
     serializer_class = EliminacionCarreraSerializer
+    
+class AlumnoActualizacionesDetailView(APIView):
+    def get_object(self, pk):
+        try:
+            return ActualizacionAlumno.objects.filter(alumno_id=pk)
+        except ActualizacionAlumno.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        alumno = self.get_object(pk)
+        serializer = ActualizacionAlumnoSerializer(alumno, many=True)
+        return Response(serializer.data)

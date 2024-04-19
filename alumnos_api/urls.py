@@ -17,6 +17,6 @@ urlpatterns = [
     path('alumnos/creaciones/', AlumnosCreacionView.as_view(), name='list_creacion_alumno'),
     path('alumnos/actualizaciones', AlumnosActualizacionView.as_view(), name='actualizacion_alumno'),
     path('alumnos/eliminaciones/', AlumnosEliminacionView.as_view(), name='detail_creacion_alumno'),
-    
+    path('alumnos/actualizaciones/<int:pk>/', AlumnoActualizacionesDetailView.as_view(), name='alumno_detalle_logs'),
     
 ]

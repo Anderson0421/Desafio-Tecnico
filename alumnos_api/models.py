@@ -19,8 +19,10 @@ class Alumno(models.Model):
     direccion = models.CharField(max_length=200, blank=False, null=False)
     correo = models.EmailField(
         validators=[EmailValidator()], blank=False, null=False)
-    telefono = models.CharField(max_length=15, blank=False, null=False)
-    DNI = models.CharField(max_length=8, unique=False, blank=False, null=False)
+    telefono = models.IntegerField(blank=False, null=False)
+    DNI = models.IntegerField(blank=False, null=False, unique=True, validators=[
+        MinValueValidator(10000000), MaxValueValidator(99999999)
+    ])
     carrera = models.ForeignKey(Carrera, on_delete=models.CASCADE)
     fecha_inscripcion = models.DateField(
         auto_now_add=False, blank=False, null=False)

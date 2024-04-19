@@ -9,7 +9,7 @@ class CarreraSerializer(serializers.ModelSerializer):
 class AlumnoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Alumno
-        fields = ['id', 'nombre', 'apellido', 'edad', 'direccion', 'correo', 'telefono', 'carrera', 'fecha_inscripcion']
+        fields = ['id', 'nombre', 'apellido', 'edad','DNI', 'direccion', 'correo', 'telefono', 'carrera', 'fecha_inscripcion']
 
 class CreacionAlumnoSerializer(serializers.ModelSerializer):
     class Meta:
