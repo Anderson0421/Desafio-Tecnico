@@ -2,9 +2,10 @@ from django.http import Http404
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .models import Carrera, Alumno
-from .serializers import CarreraSerializer, AlumnoSerializer
+from .models import *
+from .serializers import *
 from rest_framework import status
+from rest_framework import generics
 
 
 class CarreraListView(APIView):
@@ -99,3 +100,28 @@ class AlumnoDetailView(APIView):
 
         alumno.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class AlumnosCreacionView(generics.ListAPIView):
+    queryset = CreacionAlumno.objects.all()
+    serializer_class = CreacionAlumnoSerializer
+
+class AlumnosActualizacionView(generics.ListAPIView):
+    queryset = ActualizacionAlumno.objects.all()
+    serializer_class = ActualizacionAlumnoSerializer
+    
+class AlumnosEliminacionView(generics.ListAPIView):
+    queryset = EliminacionAlumno.objects.all()
+    serializer_class = EliminacionAlumnoSerializer
+    
+class CarrerasCreacionView(generics.ListAPIView):
+    queryset = CreacionCarrera.objects.all()
+    serializer_class = CreacionCarreraSerializer
+
+class CarrerasActualizacionView(generics.ListAPIView):
+    queryset = ActualizacionCarrera.objects.all()
+    serializer_class = ActualizacionCarreraSerializer
+
+class CarrerasEliminacionView(generics.ListAPIView):
+    queryset = EliminacionCarrera.objects.all()
+    serializer_class = EliminacionCarreraSerializer
